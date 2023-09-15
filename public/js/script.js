@@ -13,29 +13,31 @@ const table = document.getElementById('table');
 function play() {
   const name = nameInput.value;
 
-  const socket = io({ query: { name } });
+  if (name.length > 2) {
+    const socket = io({ query: { name } });
 
-  formName.classList.add('hidde');
-  game.classList.remove('hidde');
+    formName.classList.add('hidde');
+    game.classList.remove('hidde');
 
-  socket.on('update-clients', (data) => {
-    let rows = '';
-    data.forEach(
-      ({ name, score }) =>
-        (rows += `<tr><td>${name}</td><td>${score}</td></tr>`)
-    );
-    table.tBodies[0].innerHTML = rows;
-  });
+    socket.on('update-clients', (data) => {
+      let rows = '';
+      data.forEach(
+        ({ name, score }) =>
+          (rows += `<tr><td>${name}</td><td>${score}</td></tr>`)
+      );
+      table.tBodies[0].innerHTML = rows;
+    });
 
-  socket.on('numbers', (data) => {
-    numbers.innerText = data.length > 0 ? data : '...';
-  });
+    socket.on('numbers', (data) => {
+      numbers.innerText = data.length > 0 ? data : '...';
+    });
 
-  function sendGuess() {
-    socket.emit('guess', guessInput.value);
+    function sendGuess() {
+      socket.emit('guess', guessInput.value);
+    }
+
+    guessButton.addEventListener('click', sendGuess);
   }
-
-  guessButton.addEventListener('click', sendGuess);
 }
 
 playButton.addEventListener('click', play);
