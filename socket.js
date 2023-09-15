@@ -5,7 +5,7 @@ const io = new Server(server);
 
 let clients = [];
 let numbers = [];
-let secretNumber = 10;
+let secretNumber = 1 + Math.floor(Math.random() * 100 - 1);
 
 io.on('connection', (socket) => {
   const name = socket.handshake.query.name;
