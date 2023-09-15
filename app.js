@@ -1,9 +1,9 @@
-import { createServer } from 'http';
-import express from 'express';
+const { createServer } = require('http');
+const express = require('express');
 
 const app = express();
 const server = createServer(app);
 
 app.use(express.static('public'));
 
-export default server;
+module.exports = server;

@@ -1,1 +1,1 @@
-import io from './socket.js';
+const io = require('./socket');

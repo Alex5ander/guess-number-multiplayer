@@ -1,5 +1,5 @@
-import { Server } from 'socket.io';
-import server from './app.js';
+const { Server } = require('socket.io');
+const server = require('./app.js');
 
 const io = new Server(server);
 
@@ -49,4 +49,4 @@ io.on('connection', (socket) => {
 
 server.listen(3000);
 
-export default io;
+module.exports = io;
