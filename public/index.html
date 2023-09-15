@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/styles.css" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="js/script.js"></script>
+
+  <div class="form-name" id="form-name">
+    <h2>Informe seu nome para começar a adivinhar</h2>
+    <input id="name-input" placeholder="Informe seu nome" type="text">
+    <button id="play-button">Jogar</button>
+  </div>
+
+  <div class="container hidde" id="game">
+    <h2>O número está entre 1 e 100</h2>
+
+    <h3>Você consegue adivinhar?</h3>
+
+    <div class="form-game">
+      <input id="guess-input" placeholder="Informe um número" type="number" min="1" max="100">
+      <button id="guess-button">Adivinhar</button>
+    </div>
+
+    <h4>Números já usados</h4>
+    <p id="numbers">...</p>
+
+    <table border="1" id="table">
+      <caption>Jogadores Online</caption>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Pontos</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>
