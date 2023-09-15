@@ -55,7 +55,7 @@ caption {
   outline: 1px solid black;
 }
 
-.form button {
+.form-game button {
   font-size: 1.5em;
   padding: 8px;
   border: none;
@@ -64,8 +64,10 @@ caption {
   color: #fff;
 }
 
-.form button:focus {
-  outline: 1px solid black;
+.form-game button:focus {
+  background-color: #fff;
+  color: #00ff00;
+  outline: 1px solid #00ff00;
 }
 
 .hidde {
