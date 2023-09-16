@@ -159,3 +159,7 @@ caption {
   max-height: 200px;
   overflow: auto;
 }
+
+.numbers-wrap {
+  text-align: center;
+}

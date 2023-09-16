@@ -15,35 +15,33 @@ const table = document.getElementById('table');
 function play() {
   const name = nameInput.value;
 
-  if (name.length > 2 && name.length < 25) {
-    const socket = io({ query: { name } });
+  const socket = io({ query: { name } });
 
-    formName.classList.add('hidde');
-    game.classList.remove('hidde');
+  formName.classList.add('hidde');
+  game.classList.remove('hidde');
 
-    socket.on('update-clients', (data) => {
-      let rows = '';
-      data.forEach(
-        ({ name, score }) =>
-          (rows += `<tr><td>${name}</td><td>${score}</td></tr>`)
-      );
-      table.tBodies[0].innerHTML = rows;
-    });
+  socket.on('update-clients', (data) => {
+    let rows = '';
+    data.forEach(
+      ({ name, score }) =>
+        (rows += `<tr><td>${name}</td><td>${score}</td></tr>`)
+    );
+    table.tBodies[0].innerHTML = rows;
+  });
 
-    socket.on('numbers', (data) => {
-      numbersP.innerText = data.length > 0 ? data : '...';
-    });
+  socket.on('numbers', (data) => {
+    numbersP.innerText = data.length > 0 ? data : '...';
+  });
 
-    function sendGuess() {
-      const number = guessInput.value;
-      if (!Number.isNaN(number)) {
-        socket.emit('guess', guessInput.value);
-        guessInput.value = '';
-      }
+  function sendGuess() {
+    const number = guessInput.value;
+    if (!Number.isNaN(number)) {
+      socket.emit('guess', guessInput.value);
+      guessInput.value = '';
     }
-
-    guessButton.addEventListener('click', sendGuess);
   }
+
+  guessButton.addEventListener('click', sendGuess);
 }
 
 nameInput.addEventListener('input', () => {
@@ -53,7 +51,10 @@ nameInput.addEventListener('input', () => {
 
 guessInput.addEventListener('input', () => {
   const number = guessInput.value;
-  const hasNumber = numbersP.textContent.split(',').includes(number);
-  guessButton.disabled = hasNumber;
+  const invalidNumber =
+    numbersP.textContent.split(',').includes(number) ||
+    number < 1 ||
+    number > 100;
+  guessButton.disabled = invalidNumber;
 });
 playButton.addEventListener('click', play);
