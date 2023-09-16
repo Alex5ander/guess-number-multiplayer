@@ -101,7 +101,6 @@ caption {
 }
 
 .form-name {
-  width: 75%;
   margin: auto;
   display: flex;
   flex-direction: column;
