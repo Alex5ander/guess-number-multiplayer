@@ -1,7 +1,9 @@
 const nameInput = document.getElementById('name-input');
+/** @type {HTMLButtonElement} */
 const playButton = document.getElementById('play-button');
-const numbers = document.getElementById('numbers');
+const numbersP = document.getElementById('numbers');
 const guessInput = document.getElementById('guess-input');
+/** @type {HTMLButtonElement} */
 const guessButton = document.getElementById('guess-button');
 
 const formName = document.getElementById('form-name');
@@ -29,7 +31,7 @@ function play() {
     });
 
     socket.on('numbers', (data) => {
-      numbers.innerText = data.length > 0 ? data : '...';
+      numbersP.innerText = data.length > 0 ? data : '...';
     });
 
     function sendGuess() {
@@ -44,4 +46,14 @@ function play() {
   }
 }
 
+nameInput.addEventListener('input', () => {
+  const name = nameInput.value;
+  playButton.disabled = name.length < 3 || name.length > 25;
+});
+
+guessInput.addEventListener('input', () => {
+  const number = guessInput.value;
+  const hasNumber = numbersP.textContent.split(',').includes(number);
+  guessButton.disabled = hasNumber;
+});
 playButton.addEventListener('click', play);

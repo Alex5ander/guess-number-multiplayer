@@ -58,6 +58,7 @@ caption {
   padding: 0.25em;
   outline: none;
   border: 1px solid gray;
+  box-shadow: 0px 4px 4px #0000001a;
 }
 
 .form-game input:focus {
@@ -75,6 +76,7 @@ caption {
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
+  box-shadow: 0px 4px 4px #0000001a;
 }
 
 .form-game button:hover {
@@ -88,6 +90,10 @@ caption {
   color: #00ff00;
   outline: 1px solid #00ff00;
   transform: scale(0.75);
+}
+
+.form-game button:disabled {
+  opacity: 0.25;
 }
 
 .hidde {
@@ -111,6 +117,7 @@ caption {
   padding: 0.25em;
   outline: none;
   border: 1px solid gray;
+  box-shadow: 0px 4px 4px #0000001a;
 }
 
 .form-name input:focus {
@@ -127,6 +134,7 @@ caption {
   text-transform: uppercase;
   transition: 0.2s ease-in-out;
   cursor: pointer;
+  box-shadow: 0px 4px 4px #0000001a;
 }
 
 .form-name button:hover {
@@ -140,6 +148,10 @@ caption {
   color: darkblue;
   outline: 1px darkblue solid;
   transform: scale(0.75);
+}
+
+.form-name button:disabled {
+  opacity: 0.25;
 }
 
 .table-wrap {

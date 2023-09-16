@@ -10,7 +10,7 @@ let secretNumber = 1 + Math.floor(Math.random() * 100 - 1);
 io.on('connection', (socket) => {
   const name = socket.handshake.query.name;
 
-  if (name.length < 2 || name.length > 25) {
+  if (name.length < 3 || name.length > 25) {
     socket.disconnect();
     return;
   }
