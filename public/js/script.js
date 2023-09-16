@@ -38,6 +38,7 @@ function play() {
     if (!Number.isNaN(number)) {
       socket.emit('guess', guessInput.value);
       guessInput.value = '';
+      guessButton.disabled = true;
     }
   }
 
