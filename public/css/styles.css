@@ -161,5 +161,6 @@ caption {
 }
 
 .numbers-wrap {
+  word-wrap: break-word;
   text-align: center;
 }
