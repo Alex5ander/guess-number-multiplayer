@@ -164,4 +164,6 @@ caption {
   width: 100%;
   word-wrap: break-word;
   text-align: center;
+  overflow: auto;
+  max-height: 100px;
 }
