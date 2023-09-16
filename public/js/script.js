@@ -13,7 +13,7 @@ const table = document.getElementById('table');
 function play() {
   const name = nameInput.value;
 
-  if (name.length > 2) {
+  if (name.length > 2 && name.length < 25) {
     const socket = io({ query: { name } });
 
     formName.classList.add('hidde');
@@ -33,7 +33,11 @@ function play() {
     });
 
     function sendGuess() {
-      socket.emit('guess', guessInput.value);
+      const number = guessInput.value;
+      if (!Number.isNaN(number)) {
+        socket.emit('guess', guessInput.value);
+        guessInput.value = '';
+      }
     }
 
     guessButton.addEventListener('click', sendGuess);
