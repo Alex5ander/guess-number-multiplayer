@@ -14,6 +14,7 @@ let numbers = [];
 /** @type {HTMLTableElement} */
 const table = document.getElementById('table');
 
+/** @param {number} number */
 const IsValid = (number) =>
   !numbers.includes(number) && number >= 1 && number <= 100;
 
@@ -52,7 +53,7 @@ function play() {
 
   formGame.addEventListener('submit', (e) => {
     e.preventDefault();
-    const number = guessInput.value;
+    const number = parseInt(guessInput.value);
     if (IsValid(number)) {
       sendGuess(number);
     }
@@ -65,7 +66,7 @@ nameInput.addEventListener('input', () => {
 });
 
 guessInput.addEventListener('input', () => {
-  guessButton.disabled = !IsValid(guessInput.value);
+  guessButton.disabled = !IsValid(parseInt(guessInput.value));
 });
 
 formName.addEventListener('submit', (e) => {
