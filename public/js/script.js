@@ -38,8 +38,14 @@ function play() {
     numbersP.innerText = data.length > 0 ? data : '...';
   });
 
+  socket.on('target', (data) =>
+    alert(`${data.name} acertou!, o número secreto era ${data.secretNumber}`)
+  );
+
   function sendGuess(number) {
-    socket.emit('guess', number);
+    socket.emit('guess', number, (secretNumber) =>
+      alert(`Parabéns você acertou! o número secreto era ${secretNumber}`)
+    );
     guessInput.value = '';
     guessButton.disabled = true;
   }

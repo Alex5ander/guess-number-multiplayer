@@ -44,7 +44,7 @@ const IsValid = (number) =>
 
 /** @param {Socket<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>} socket */
 const OnGuess = (socket) => {
-  socket.on('guess', (data) => {
+  socket.on('guess', (data, callback) => {
     if (IsValid(data)) {
       numbers.push(data);
 
@@ -54,8 +54,8 @@ const OnGuess = (socket) => {
 
         UpdateClients();
 
+        callback(secretNumber);
         socket.broadcast.emit('target', { name: client.name, secretNumber });
-        socket.emit('win', secretNumber);
 
         secretNumber = random();
         numbers = [];
