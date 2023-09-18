@@ -66,5 +66,3 @@ formName.addEventListener('submit', (e) => {
   e.preventDefault();
   play();
 });
-
-playButton.addEventListener('click', play);
