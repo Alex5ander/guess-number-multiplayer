@@ -15,23 +15,25 @@
   <script src="/socket.io/socket.io.js"></script>
   <script type="module" src="js/script.js"></script>
 
-  <div class="container" id="form-name">
-    <div class="form-name">
-      <h2>Informe seu nome para começar a adivinhar</h2>
+  <div class="container" id="form-name-container">
+
+    <h2>Informe seu nome para começar a adivinhar</h2>
+
+    <form class="form" id="form-name">
       <input id="name-input" placeholder="Informe seu nome" type="text">
-      <button disabled id="play-button">Jogar</button>
-    </div>
+      <button type="submit" disabled id="play-button">Jogar</button>
+    </form>
   </div>
 
-  <div class="container hidde" id="game">
+  <div class="container hidde" id="form-game-container">
     <h2>O número está entre 1 e 100</h2>
 
     <h3>Você consegue adivinhar?</h3>
 
-    <div class="form-game">
+    <form class="form" id="form-game">
       <input id="guess-input" placeholder="Informe um número" type="number" min="1" max="100">
-      <button disabled id="guess-button">Adivinhar</button>
-    </div>
+      <button type="submit" disabled id="guess-button">Adivinhar</button>
+    </form>
 
     <div class="numbers-wrap">
       <h4>Números já usados</h4>

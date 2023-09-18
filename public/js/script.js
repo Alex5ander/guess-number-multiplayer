@@ -7,7 +7,8 @@ const guessInput = document.getElementById('guess-input');
 const guessButton = document.getElementById('guess-button');
 
 const formName = document.getElementById('form-name');
-const game = document.getElementById('game');
+const formGame = document.getElementById('form-game');
+
 let numbers = [];
 
 /** @type {HTMLTableElement} */
@@ -20,8 +21,8 @@ function play() {
   const name = nameInput.value;
   const socket = io({ query: { name } });
 
-  formName.classList.add('hidde');
-  game.classList.remove('hidde');
+  document.getElementById('form-name-container').classList.add('hidde');
+  document.getElementById('form-game-container').classList.remove('hidde');
 
   socket.on('update-clients', (data) => {
     let rows = '';
@@ -43,16 +44,8 @@ function play() {
     guessButton.disabled = true;
   }
 
-  guessInput.addEventListener('keyup', (e) => {
-    if (e.key == 'Enter') {
-      const number = guessInput.value;
-      if (IsValid(number)) {
-        sendGuess(number);
-      }
-    }
-  });
-
-  guessButton.addEventListener('click', (_) => {
+  formGame.addEventListener('submit', (e) => {
+    e.preventDefault();
     const number = guessInput.value;
     if (IsValid(number)) {
       sendGuess(number);
@@ -67,6 +60,11 @@ nameInput.addEventListener('input', () => {
 
 guessInput.addEventListener('input', () => {
   guessButton.disabled = !IsValid(guessInput.value);
+});
+
+formName.addEventListener('submit', (e) => {
+  e.preventDefault();
+  play();
 });
 
 playButton.addEventListener('click', play);

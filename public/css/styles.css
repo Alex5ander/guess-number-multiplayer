@@ -43,14 +43,14 @@ caption {
   font-weight: bold;
 }
 
-.form-game {
+.form {
   display: flex;
   justify-content: center;
   gap: 1em;
   width: 100%;
 }
 
-.form-game input {
+#guess-input {
   font-size: 1.5em;
   width: 50%;
   border-radius: 0.5em;
@@ -60,11 +60,11 @@ caption {
   box-shadow: 0px 4px 4px #0000001a;
 }
 
-.form-game input:focus {
+#guess-input:focus {
   outline: 1px solid black;
 }
 
-.form-game button {
+#guess-button {
   font-size: 1.5em;
   padding: 8px;
   border: none;
@@ -78,20 +78,20 @@ caption {
   box-shadow: 0px 4px 4px #0000001a;
 }
 
-.form-game button:not(:disabled):hover {
+#guess-button:not(:disabled):hover {
   background-color: #fff;
   color: #00ff00;
   outline: 1px solid #00ff00;
 }
 
-.form-game button:not(:disabled):active {
+#guess-button:not(:disabled):active {
   background-color: #fff;
   color: #00ff00;
   outline: 1px solid #00ff00;
   transform: scale(0.75);
 }
 
-.form-game button:disabled {
+#guess-button:disabled {
   opacity: 0.25;
 }
 
@@ -110,7 +110,7 @@ caption {
   width: 100%;
 }
 
-.form-name input {
+#name-input {
   font-size: 1.5em;
   border-radius: 0.5em;
   padding: 0.25em;
@@ -119,11 +119,11 @@ caption {
   box-shadow: 0px 4px 4px #0000001a;
 }
 
-.form-name input:focus {
+#name-input:focus {
   outline: 1px solid black;
 }
 
-.form-name button {
+#play-button {
   border-radius: 0.25rem;
   border: none;
   background-color: blue;
@@ -136,20 +136,20 @@ caption {
   box-shadow: 0px 4px 4px #0000001a;
 }
 
-.form-name button:not(:disabled):hover {
+#play-button:not(:disabled):hover {
   background-color: #fff;
   color: darkblue;
   outline: 1px darkblue solid;
 }
 
-.form-name button:not(:disabled):active {
+#play-button:not(:disabled):active {
   background-color: #fff;
   color: darkblue;
   outline: 1px darkblue solid;
   transform: scale(0.75);
 }
 
-.form-name button:disabled {
+#play-button:disabled {
   opacity: 0.25;
 }
 
