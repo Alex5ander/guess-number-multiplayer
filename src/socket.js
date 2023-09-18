@@ -7,7 +7,7 @@ const random = () => 1 + Math.floor(Math.random() * 100);
 
 let clients = [];
 let numbers = [];
-let secretNumber = random();
+let secretNumber = 10;
 
 const UpdateClients = () =>
   io.emit(
@@ -54,9 +54,8 @@ const OnGuess = (socket) => {
 
         UpdateClients();
 
-        callback(secretNumber);
         socket.broadcast.emit('target', { name: client.name, secretNumber });
-
+        callback(secretNumber);
         secretNumber = random();
         numbers = [];
       }
