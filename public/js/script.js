@@ -8,6 +8,7 @@ const guessButton = document.getElementById('guess-button');
 
 const formName = document.getElementById('form-name');
 const game = document.getElementById('game');
+let numbers = [];
 
 /** @type {HTMLTableElement} */
 const table = document.getElementById('table');
@@ -30,13 +31,14 @@ function play() {
   });
 
   socket.on('numbers', (data) => {
+    numbers = data;
     numbersP.innerText = data.length > 0 ? data : '...';
   });
 
   function sendGuess() {
     const number = guessInput.value;
-    if (!Number.isNaN(number)) {
-      socket.emit('guess', guessInput.value);
+    if (IsValid(number)) {
+      socket.emit('guess', number);
       guessInput.value = '';
       guessButton.disabled = true;
     }
@@ -50,12 +52,19 @@ nameInput.addEventListener('input', () => {
   playButton.disabled = name.length < 3 || name.length > 25;
 });
 
-guessInput.addEventListener('input', () => {
-  const number = guessInput.value;
-  const invalidNumber =
-    numbersP.textContent.split(',').includes(number) ||
-    number < 1 ||
-    number > 100;
-  guessButton.disabled = invalidNumber;
+const IsValid = (number) =>
+  !numbers.includes(number) && number >= 1 && number <= 100;
+
+guessInput.addEventListener('keyup', (e) => {
+  if (e.key == 'Enter') {
+    if (IsValid()) {
+      sendGuess();
+    }
+  }
 });
+
+guessInput.addEventListener('input', () => {
+  guessButton.disabled = !IsValid(guessInput.value);
+});
+
 playButton.addEventListener('click', play);
