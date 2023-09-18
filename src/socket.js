@@ -78,8 +78,6 @@ io.on('connection', (socket) => {
   OnConnection(socket);
   OnGuess(socket);
   OnDisconnection(socket);
-
-  console.log(clients.length);
 });
 
 server.listen(3000);
