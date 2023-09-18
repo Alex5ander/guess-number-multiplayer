@@ -54,6 +54,9 @@ const OnGuess = (socket) => {
 
         UpdateClients();
 
+        socket.broadcast.emit('target', { name: client.name, secretNumber });
+        socket.emit('win', secretNumber);
+
         secretNumber = random();
         numbers = [];
       }

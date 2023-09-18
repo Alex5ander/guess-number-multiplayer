@@ -13,9 +13,11 @@ let numbers = [];
 /** @type {HTMLTableElement} */
 const table = document.getElementById('table');
 
+const IsValid = (number) =>
+  !numbers.includes(number) && number >= 1 && number <= 100;
+
 function play() {
   const name = nameInput.value;
-
   const socket = io({ query: { name } });
 
   formName.classList.add('hidde');
@@ -35,32 +37,32 @@ function play() {
     numbersP.innerText = data.length > 0 ? data : '...';
   });
 
-  function sendGuess() {
-    const number = guessInput.value;
-    if (IsValid(number)) {
-      socket.emit('guess', number);
-      guessInput.value = '';
-      guessButton.disabled = true;
-    }
+  function sendGuess(number) {
+    socket.emit('guess', number);
+    guessInput.value = '';
+    guessButton.disabled = true;
   }
 
-  guessButton.addEventListener('click', sendGuess);
+  guessInput.addEventListener('keyup', (e) => {
+    if (e.key == 'Enter') {
+      const number = guessInput.value;
+      if (IsValid(number)) {
+        sendGuess(number);
+      }
+    }
+  });
+
+  guessButton.addEventListener('click', (_) => {
+    const number = guessInput.value;
+    if (IsValid(number)) {
+      sendGuess(number);
+    }
+  });
 }
 
 nameInput.addEventListener('input', () => {
   const name = nameInput.value;
   playButton.disabled = name.length < 3 || name.length > 25;
-});
-
-const IsValid = (number) =>
-  !numbers.includes(number) && number >= 1 && number <= 100;
-
-guessInput.addEventListener('keyup', (e) => {
-  if (e.key == 'Enter') {
-    if (IsValid()) {
-      sendGuess();
-    }
-  }
 });
 
 guessInput.addEventListener('input', () => {
