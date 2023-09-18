@@ -7,7 +7,7 @@ const random = () => 1 + Math.floor(Math.random() * 100);
 
 let clients = [];
 let numbers = [];
-let secretNumber = 10;
+let secretNumber = random();
 
 const UpdateClients = () =>
   io.emit(
