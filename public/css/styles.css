@@ -52,27 +52,9 @@ caption {
   width: 100%;
 }
 
-/** start form-name */
-
-#name-input {
-  font-size: 1.5em;
-  border-radius: 0.5em;
-  padding: 0px 0.25em;
-  height: 48px;
-  outline: none;
-  border: 1px solid gray;
-  box-shadow: 0px 4px 4px #0000001a;
-}
-
-#name-input:focus {
-  outline: 1px solid black;
-}
-
-#play-button {
+button {
   border-radius: 0.25rem;
   border: none;
-  background-color: blue;
-  color: #fff;
   font-size: 1.5rem;
   height: 48px;
   font-weight: bold;
@@ -82,75 +64,43 @@ caption {
   box-shadow: 0px 4px 4px #0000001a;
 }
 
-#play-button:not(:disabled):hover {
-  background-color: #fff;
-  color: darkblue;
-  outline: 1px darkblue solid;
+button:not(:disabled):hover {
+  filter: opacity(0.5);
 }
 
-#play-button:not(:disabled):active {
-  background-color: #fff;
-  color: darkblue;
-  outline: 1px darkblue solid;
-  transform: scale(0.75);
+button:not(:disabled):active {
+  filter: brightness(0.75);
+  transform: scale(0.99);
 }
 
-#play-button:disabled {
-  opacity: 0.25;
+button:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-/** end form-name */
-
-/** start form-game*/
-
-#guess-input {
+input {
   font-size: 1.5em;
   border-radius: 0.5em;
   padding: 0px 0.25em;
+  height: 48px;
   outline: none;
   border: 1px solid gray;
   box-shadow: 0px 4px 4px #0000001a;
-  height: 48px;
 }
 
-#guess-input:focus {
+input:focus {
   outline: 1px solid black;
 }
 
+#play-button {
+  background-color: blue;
+  color: #fff;
+}
+
 #guess-button {
-  font-size: 1.5em;
-  height: 48px;
-  border: none;
-  border-radius: 0.25rem;
   background-color: #00ff00;
   color: #fff;
-  transition: 0.2s ease-in-out;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0px 4px 4px #0000001a;
 }
-
-#guess-button:not(:disabled):hover {
-  background-color: #fff;
-  color: #00ff00;
-  outline: 1px solid #00ff00;
-}
-
-#guess-button:not(:disabled):active {
-  background-color: #fff;
-  color: #00ff00;
-  outline: 1px solid #00ff00;
-  transform: scale(0.75);
-}
-
-#guess-button:disabled {
-  opacity: 0.25;
-  cursor: not-allowed;
-}
-
-/** end form-game*/
 
 .hidde {
   display: none !important;
